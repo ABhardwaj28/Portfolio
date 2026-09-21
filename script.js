@@ -1,84 +1,349 @@
-import * as THREE from "three";
-import { EffectComposer } from "three/addons/postprocessing/EffectComposer.js";
-import { RenderPass } from "three/addons/postprocessing/RenderPass.js";
-import { UnrealBloomPass } from "three/addons/postprocessing/UnrealBloomPass.js";
 
-const scene = new THREE.Scene();
-scene.fog = new THREE.FogExp2(0x050505, 0.045);
+// =========================================
+// APOORVA BHARDWAJ — INTERACTIVE PORTFOLIO
+// =========================================
 
-const camera = new THREE.PerspectiveCamera(55, innerWidth/innerHeight, .1, 100);
-camera.position.set(0,0,7);
+document.addEventListener("DOMContentLoaded", () => {
 
-const renderer = new THREE.WebGLRenderer({canvas:document.querySelector("#scene"),antialias:true,alpha:true});
-renderer.setPixelRatio(Math.min(devicePixelRatio,2));
-renderer.setSize(innerWidth,innerHeight);
-renderer.outputColorSpace = THREE.SRGBColorSpace;
+  const cursor = document.querySelector(".cursor");
+  const follower = document.querySelector(".cursor-follower");
 
-const composer = new EffectComposer(renderer);
-composer.addPass(new RenderPass(scene,camera));
-composer.addPass(new UnrealBloomPass(new THREE.Vector2(innerWidth,innerHeight),.55,.7,.2));
+  const orb = document.querySelector(".orb");
+  const orbContainer = document.querySelector("#orb-container");
 
-const group = new THREE.Group();
-scene.add(group);
+  const magneticElements = document.querySelectorAll(".magnetic");
+  const tiltCards = document.querySelectorAll(".project-tilt");
+  const revealElements = document.querySelectorAll(".reveal");
 
-// Central wireframe "digital planet"
-const geo = new THREE.IcosahedronGeometry(1.65,4);
-const mat = new THREE.MeshBasicMaterial({color:0xdedbd1,wireframe:true,transparent:true,opacity:.12});
-const wire = new THREE.Mesh(geo,mat);
-group.add(wire);
 
-const core = new THREE.Mesh(
-  new THREE.IcosahedronGeometry(1.15,3),
-  new THREE.MeshBasicMaterial({color:0xffffff,wireframe:true,transparent:true,opacity:.035})
-);
-group.add(core);
+  // =========================================
+  // 1. CUSTOM CURSOR
+  // =========================================
 
-const ringMat = new THREE.MeshBasicMaterial({color:0xffffff,transparent:true,opacity:.18,side:THREE.DoubleSide});
-for(let i=0;i<3;i++){
-  const r = new THREE.Mesh(new THREE.TorusGeometry(2.1+i*.35,.008,8,160),ringMat);
-  r.rotation.set(.6+i*.45,.2+i*.5,i*.7);
-  group.add(r);
-}
+  let mouseX = window.innerWidth / 2;
+  let mouseY = window.innerHeight / 2;
 
-// particle field
-const count=1800, positions=new Float32Array(count*3);
-for(let i=0;i<count;i++){
-  const radius=4+Math.random()*8, a=Math.random()*Math.PI*2, b=Math.acos(2*Math.random()-1);
-  positions[i*3]=radius*Math.sin(b)*Math.cos(a);
-  positions[i*3+1]=radius*Math.cos(b);
-  positions[i*3+2]=radius*Math.sin(b)*Math.sin(a);
-}
-const pg=new THREE.BufferGeometry();
-pg.setAttribute("position",new THREE.BufferAttribute(positions,3));
-const particles=new THREE.Points(pg,new THREE.PointsMaterial({color:0xaaaaaa,size:.018,transparent:true,opacity:.5}));
-scene.add(particles);
+  let followerX = mouseX;
+  let followerY = mouseY;
 
-const mouse={x:0,y:0};
-addEventListener("pointermove",e=>{
-  mouse.x=(e.clientX/innerWidth-.5);
-  mouse.y=(e.clientY/innerHeight-.5);
-});
+  const isTouchDevice =
+    window.matchMedia("(hover: none)").matches;
 
-let scroll=0;
-addEventListener("scroll",()=>scroll=scrollY);
+  if (!isTouchDevice && cursor && follower) {
 
-function animate(t){
-  requestAnimationFrame(animate);
-  const time=t*.0003;
-  group.rotation.y += .0018;
-  group.rotation.x = Math.sin(time)*.08 + mouse.y*.15;
-  group.position.x += ((mouse.x*.5)-group.position.x)*.025;
-  group.position.y += ((-mouse.y*.35 + Math.min(scroll/900,1)*.7)-group.position.y)*.02;
-  group.scale.setScalar(1 + Math.sin(time*2)*.025);
-  particles.rotation.y += .00015;
-  particles.rotation.x = mouse.y*.03;
-  composer.render();
-}
-animate(0);
+    document.addEventListener("mousemove", (event) => {
 
-addEventListener("resize",()=>{
-  camera.aspect=innerWidth/innerHeight;
-  camera.updateProjectionMatrix();
-  renderer.setSize(innerWidth,innerHeight);
-  composer.setSize(innerWidth,innerHeight);
+      mouseX = event.clientX;
+      mouseY = event.clientY;
+
+      cursor.style.left = `${mouseX}px`;
+      cursor.style.top = `${mouseY}px`;
+
+    });
+
+    function animateFollower() {
+
+      followerX += (mouseX - followerX) * 0.12;
+      followerY += (mouseY - followerY) * 0.12;
+
+      follower.style.left = `${followerX}px`;
+      follower.style.top = `${followerY}px`;
+
+      requestAnimationFrame(animateFollower);
+
+    }
+
+    animateFollower();
+
+  }
+
+
+  // =========================================
+  // 2. MAGNETIC ELEMENTS
+  // =========================================
+
+  magneticElements.forEach((element) => {
+
+    element.addEventListener("mousemove", (event) => {
+
+      if (isTouchDevice) return;
+
+      const rect = element.getBoundingClientRect();
+
+      const x = event.clientX - rect.left - rect.width / 2;
+      const y = event.clientY - rect.top - rect.height / 2;
+
+      const strength = 0.25;
+
+      element.style.transform =
+        `translate(${x * strength}px, ${y * strength}px)`;
+
+      if (follower) {
+        follower.classList.add("hovering");
+      }
+
+    });
+
+    element.addEventListener("mouseleave", () => {
+
+      element.style.transform = "";
+
+      if (follower) {
+        follower.classList.remove("hovering");
+      }
+
+    });
+
+  });
+
+
+  // =========================================
+  // 3. MOUSE-CONTROLLED 3D ORB
+  // =========================================
+
+  if (orb && orbContainer) {
+
+    orbContainer.addEventListener("mousemove", (event) => {
+
+      if (isTouchDevice) return;
+
+      const rect = orbContainer.getBoundingClientRect();
+
+      const x = (event.clientX - rect.left) / rect.width - 0.5;
+      const y = (event.clientY - rect.top) / rect.height - 0.5;
+
+      const rotateX = -y * 30;
+      const rotateY = x * 30;
+
+      orb.style.transform =
+        `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+
+    });
+
+    orbContainer.addEventListener("mouseleave", () => {
+
+      orb.style.transform = "";
+
+    });
+
+  }
+
+
+  // =========================================
+  // 4. 3D PROJECT CARD TILT
+  // =========================================
+
+  tiltCards.forEach((card) => {
+
+    card.addEventListener("mousemove", (event) => {
+
+      if (isTouchDevice) return;
+
+      const rect = card.getBoundingClientRect();
+
+      const x = event.clientX - rect.left;
+      const y = event.clientY - rect.top;
+
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+
+      const rotateX = ((y - centerY) / centerY) * -5;
+      const rotateY = ((x - centerX) / centerX) * 5;
+
+      card.style.transform =
+        `perspective(1000px)
+         rotateX(${rotateX}deg)
+         rotateY(${rotateY}deg)`;
+
+    });
+
+    card.addEventListener("mouseleave", () => {
+
+      card.style.transform =
+        "perspective(1000px) rotateX(0deg) rotateY(0deg)";
+
+    });
+
+  });
+
+
+  // =========================================
+  // 5. SCROLL REVEAL ANIMATIONS
+  // =========================================
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+
+      entries.forEach((entry) => {
+
+        if (entry.isIntersecting) {
+
+          entry.target.classList.add("active");
+
+          observer.unobserve(entry.target);
+
+        }
+
+      });
+
+    },
+    {
+      threshold: 0.15
+    }
+  );
+
+  revealElements.forEach((element) => {
+
+    observer.observe(element);
+
+  });
+
+
+  // =========================================
+  // 6. SCROLL PARALLAX
+  // =========================================
+
+  const heroVisual = document.querySelector(".hero-visual");
+  const heroGlow = document.querySelector(".hero-background-glow");
+
+  let ticking = false;
+
+  function updateParallax() {
+
+    const scrollY = window.scrollY;
+
+    if (heroVisual) {
+
+      heroVisual.style.transform =
+        `translateY(${scrollY * 0.12}px)`;
+
+    }
+
+    if (heroGlow) {
+
+      heroGlow.style.transform =
+        `translateY(${scrollY * 0.18}px)`;
+
+    }
+
+    ticking = false;
+
+  }
+
+  window.addEventListener("scroll", () => {
+
+    if (!ticking) {
+
+      window.requestAnimationFrame(updateParallax);
+
+      ticking = true;
+
+    }
+
+  }, { passive: true });
+
+
+  // =========================================
+  // 7. MOBILE MENU
+  // =========================================
+
+  const menuButton = document.querySelector(".menu-button");
+  const navLinks = document.querySelector(".nav-links");
+
+  if (menuButton && navLinks) {
+
+    menuButton.addEventListener("click", () => {
+
+      const isOpen = navLinks.classList.toggle("open");
+
+      menuButton.setAttribute(
+        "aria-expanded",
+        String(isOpen)
+      );
+
+    });
+
+    navLinks.querySelectorAll("a").forEach((link) => {
+
+      link.addEventListener("click", () => {
+
+        navLinks.classList.remove("open");
+
+        menuButton.setAttribute(
+          "aria-expanded",
+          "false"
+        );
+
+      });
+
+    });
+
+  }
+
+
+  // =========================================
+  // 8. ACTIVE NAVIGATION
+  // =========================================
+
+  const sections = document.querySelectorAll("main section[id]");
+  const navigationLinks = document.querySelectorAll(".nav-links a");
+
+  const sectionObserver = new IntersectionObserver(
+    (entries) => {
+
+      entries.forEach((entry) => {
+
+        if (entry.isIntersecting) {
+
+          navigationLinks.forEach((link) => {
+
+            link.classList.remove("active");
+
+            if (
+              link.getAttribute("href") ===
+              `#${entry.target.id}`
+            ) {
+
+              link.classList.add("active");
+
+            }
+
+          });
+
+        }
+
+      });
+
+    },
+    {
+      threshold: 0.45
+    }
+  );
+
+  sections.forEach((section) => {
+
+    sectionObserver.observe(section);
+
+  });
+
+
+  // =========================================
+  // 9. KEYBOARD ACCESSIBILITY
+  // =========================================
+
+  document.addEventListener("keydown", (event) => {
+
+    if (event.key === "Escape") {
+
+      navLinks?.classList.remove("open");
+
+      menuButton?.setAttribute(
+        "aria-expanded",
+        "false"
+      );
+
+    }
+
+  });
+
 });
