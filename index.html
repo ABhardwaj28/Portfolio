@@ -2,514 +2,179 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>Apoorva Bhardwaj | Creative Engineer</title>
-
-  <meta
-    name="description"
-    content="Apoorva Bhardwaj — Computer Science student, developer, and technology enthusiast."
-  />
-
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Apoorva Bhardwaj — Software Developer and Builder">
+  <title>AB — Digital Portfolio</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-
-  <!-- Custom Cursor -->
   <div class="cursor"></div>
-  <div class="cursor-follower"></div>
+  <div class="cursor-outline"></div>
 
-  <!-- Background -->
-  <canvas id="background-canvas"></canvas>
+  <div class="loader">
+    <span>LOADING EXPERIENCE</span>
+    <strong>001</strong>
+  </div>
 
-  <!-- Navigation -->
-  <header class="navbar">
+  <header>
+    <a href="#home" class="logo magnetic">AB<span>.</span></a>
 
-    <a href="#home" class="logo magnetic">
-      AB<span>.</span>
-    </a>
-
-    <nav class="nav-links">
-      <a href="#about" class="magnetic">About</a>
-      <a href="#projects" class="magnetic">Projects</a>
-      <a href="#skills" class="magnetic">Skills</a>
-      <a href="#achievements" class="magnetic">Achievements</a>
-      <a href="#contact" class="magnetic">Contact</a>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#work">Work</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
     </nav>
 
-    <button class="menu-button magnetic" aria-label="Open menu">
-      <span></span>
-      <span></span>
-    </button>
-
+    <span class="menu-status">AVAILABLE / 2026</span>
   </header>
 
-
-  <!-- Main Website -->
   <main>
-
-    <!-- HERO SECTION -->
     <section id="home" class="hero">
-
-      <div class="hero-background-glow"></div>
-
-      <div class="hero-content">
-
-        <p class="eyebrow reveal">
-          COMPUTER SCIENCE • CLOUD & BIG DATA
-        </p>
-
-        <h1 class="hero-title">
-          <span class="line reveal">BUILDING</span>
-          <span class="line reveal">DIGITAL</span>
-          <span class="line reveal gradient-text">EXPERIENCES.</span>
-        </h1>
-
-        <p class="hero-description reveal">
-          I'm Apoorva Bhardwaj — a developer exploring the intersection
-          of software engineering, AI, data, and technology.
-        </p>
-
-        <div class="hero-actions reveal">
-
-          <a href="#projects" class="primary-button magnetic">
-            Explore my work
-            <span>↗</span>
-          </a>
-
-          <a href="#about" class="secondary-button magnetic">
-            Discover more
-          </a>
-
-        </div>
-
+      <div class="hero-top">
+        <span>CREATIVE DEVELOPER</span>
+        <span>INDIA / 13°N 77°E</span>
       </div>
 
-
-      <!-- Interactive 3D Orb -->
-      <div class="hero-visual">
-
-        <div class="orb-container" id="orb-container">
-
-          <div class="orb">
-            <div class="orb-ring ring-one"></div>
-            <div class="orb-ring ring-two"></div>
-            <div class="orb-ring ring-three"></div>
-            <div class="orb-core"></div>
-          </div>
-
-          <div class="orb-label label-top">
-            <span class="status-dot"></span>
-            SYSTEM ONLINE
-          </div>
-
-          <div class="orb-label label-bottom">
-            CREATIVE ENGINEERING
-          </div>
-
-        </div>
-
+      <div class="hero-title">
+        <div class="line reveal-text">APOORVA</div>
+        <div class="line outline reveal-text">BHARDWAJ<span class="dot">.</span></div>
       </div>
 
-
-      <div class="hero-footer reveal">
-
-        <span>SCROLL TO EXPLORE</span>
-
-        <div class="scroll-line">
-          <div></div>
-        </div>
-
-        <span>01 / 05</span>
-
-      </div>
-
-    </section>
-
-
-    <!-- ABOUT SECTION -->
-    <section id="about" class="about section">
-
-      <div class="section-header reveal">
-        <span class="section-number">01</span>
-        <span class="section-label">ABOUT ME</span>
-      </div>
-
-      <div class="about-grid">
-
-        <div class="about-heading">
-          <h2 class="reveal">
-            CURIOUS MINDS
-            <br />
-            <span class="gradient-text">BUILD THE FUTURE.</span>
-          </h2>
-        </div>
-
-        <div class="about-text reveal">
-
-          <p>
-            I'm a first-year Computer Science student specializing
-            in Cloud & Big Data at Polaris School of Technology.
-          </p>
-
-          <p>
-            I enjoy building practical projects, exploring new
-            technologies, and turning ideas into interactive
-            digital experiences.
-          </p>
-
-          <a href="#contact" class="text-link magnetic">
-            Let's connect ↗
-          </a>
-
-        </div>
-
-      </div>
-
-      <!-- Interactive Stats -->
-      <div class="stats-grid reveal">
-
-        <div class="stat-card magnetic">
-          <span class="stat-number">01</span>
-          <span class="stat-label">CURIOUS DEVELOPER</span>
-        </div>
-
-        <div class="stat-card magnetic">
-          <span class="stat-number">∞</span>
-          <span class="stat-label">IDEAS TO EXPLORE</span>
-        </div>
-
-        <div class="stat-card magnetic">
-          <span class="stat-number">24/7</span>
-          <span class="stat-label">LEARNING MODE</span>
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- PROJECTS SECTION -->
-    <section id="projects" class="projects section">
-
-      <div class="section-header reveal">
-        <span class="section-number">02</span>
-        <span class="section-label">SELECTED PROJECTS</span>
-      </div>
-
-      <div class="projects-heading reveal">
-        <h2>
-          THINGS I'VE
-          <br />
-          <span class="gradient-text">BUILT.</span>
-        </h2>
-
+      <div class="hero-bottom">
         <p>
-          Experiments, ideas, and projects brought to life through code.
+          Building digital experiences, data systems,
+          and experiments at the intersection of code
+          and curiosity.
         </p>
+
+        <a href="#work" class="circle-link magnetic">
+          EXPLORE ↗
+        </a>
       </div>
 
-
-      <!-- Project 01 -->
-      <article class="project-card project-tilt reveal">
-
-        <div class="project-image f1-project-visual">
-
-          <span class="project-tag">01 / DATA ANALYTICS</span>
-
-          <div class="project-graphic">
-            <div class="telemetry-line"></div>
-            <div class="telemetry-line line-two"></div>
-            <div class="telemetry-point"></div>
-          </div>
-
-          <span class="project-overlay-title">F1 / TELEMETRY</span>
-
-        </div>
-
-        <div class="project-info">
-
-          <div>
-            <span class="project-category">PYTHON • FASTF1 • STREAMLIT</span>
-
-            <h3>Formula 1 Analytics</h3>
-
-            <p>
-              An interactive dashboard for exploring racing data,
-              driver performance, telemetry, and tyre strategies.
-            </p>
-          </div>
-
-          <a
-            href="https://github.com/ABhardwaj28/F1-project"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="project-link magnetic"
-          >
-            View project ↗
-          </a>
-
-        </div>
-
-      </article>
-
-
-      <!-- Project 02 -->
-      <article class="project-card project-tilt reveal">
-
-        <div class="project-image physics-project-visual">
-
-          <span class="project-tag">02 / SIMULATION</span>
-
-          <div class="physics-orbit"></div>
-          <div class="physics-orbit orbit-two"></div>
-
-          <span class="project-overlay-title">PHYSICS / SIMULATION</span>
-
-        </div>
-
-        <div class="project-info">
-
-          <div>
-            <span class="project-category">PYTHON • TKINTER</span>
-
-            <h3>Diffraction Simulation</h3>
-
-            <p>
-              A physics-based simulation exploring diffraction
-              and hair thickness estimation.
-            </p>
-          </div>
-
-          <a href="#" class="project-link magnetic">
-            View project ↗
-          </a>
-
-        </div>
-
-      </article>
-
-
-      <!-- Project 03 -->
-      <article class="project-card project-tilt reveal">
-
-        <div class="project-image database-project-visual">
-
-          <span class="project-tag">03 / DATABASES</span>
-
-          <div class="database-cylinder"></div>
-
-          <span class="project-overlay-title">DATABASE / SYSTEMS</span>
-
-        </div>
-
-        <div class="project-info">
-
-          <div>
-            <span class="project-category">SQL • DBMS • SOFTWARE</span>
-
-            <h3>Banking Management System</h3>
-
-            <p>
-              A database-oriented project focused on structured
-              information and management operations.
-            </p>
-          </div>
-
-          <a href="#" class="project-link magnetic">
-            View project ↗
-          </a>
-
-        </div>
-
-      </article>
-
+      <div class="hero-mark">AB / 001</div>
     </section>
 
+    <section id="about" class="section about">
+      <div class="section-label">01 / ABOUT</div>
 
-    <!-- SKILLS SECTION -->
-    <section id="skills" class="skills section">
+      <div class="section-grid">
+        <h2 class="huge-title reveal">CURIOUS<br><span>BY DESIGN.</span></h2>
 
-      <div class="section-header reveal">
-        <span class="section-number">03</span>
-        <span class="section-label">TECHNICAL ARSENAL</span>
+        <div class="section-copy reveal">
+          <p>
+            I'm Apoorva, a first-year B.Tech student
+            specialising in Cloud & Big Data.
+          </p>
+
+          <p>
+            I enjoy building practical software,
+            exploring artificial intelligence,
+            working with data, and turning ideas
+            into interactive experiences.
+          </p>
+
+          <div class="details">
+            <div><span>BASED IN</span><strong>BENGALURU, INDIA</strong></div>
+            <div><span>FOCUS</span><strong>SOFTWARE / DATA / CLOUD</strong></div>
+            <div><span>CURRENTLY</span><strong>LEARNING & BUILDING</strong></div>
+          </div>
+        </div>
       </div>
-
-      <h2 class="reveal">
-        TECHNOLOGY IS
-        <br />
-        <span class="gradient-text">MY PLAYGROUND.</span>
-      </h2>
-
-      <div class="skills-marquee">
-
-        <div class="marquee-track">
-
-          <span>PYTHON ✦</span>
-          <span>SQL ✦</span>
-          <span>STREAMLIT ✦</span>
-          <span>GIT ✦</span>
-          <span>WEB DEVELOPMENT ✦</span>
-          <span>DATA ANALYTICS ✦</span>
-
-        </div>
-
-      </div>
-
-      <div class="skills-grid reveal">
-
-        <div class="skill-item magnetic">
-          <span>01</span>
-          <h3>Programming</h3>
-          <p>Python, JavaScript, SQL</p>
-        </div>
-
-        <div class="skill-item magnetic">
-          <span>02</span>
-          <h3>Data & AI</h3>
-          <p>Data analytics, simulations, APIs</p>
-        </div>
-
-        <div class="skill-item magnetic">
-          <span>03</span>
-          <h3>Development</h3>
-          <p>Web development, Streamlit, Git</p>
-        </div>
-
-        <div class="skill-item magnetic">
-          <span>04</span>
-          <h3>Infrastructure</h3>
-          <p>Cloud concepts, Docker, databases</p>
-        </div>
-
-      </div>
-
     </section>
 
+    <section id="work" class="section work">
+      <div class="section-label">02 / SELECTED WORK</div>
 
-    <!-- ACHIEVEMENTS SECTION -->
-    <section id="achievements" class="achievements section">
+      <h2 class="huge-title reveal">THINGS<br><span>I BUILD.</span></h2>
 
-      <div class="section-header reveal">
-        <span class="section-number">04</span>
-        <span class="section-label">ACHIEVEMENTS</span>
-      </div>
-
-      <h2 class="reveal">
-        MILESTONES &
-        <br />
-        <span class="gradient-text">MOMENTS.</span>
-      </h2>
-
-      <div class="achievement-list">
-
-        <div class="achievement-item reveal magnetic">
-          <span>01</span>
+      <div class="project-list">
+        <a class="project magnetic" href="https://github.com/ABhardwaj28/F1-project" target="_blank">
+          <span class="project-number">01</span>
           <div>
-            <h3>1st Place — Coding Competition</h3>
-            <p>Interschool coding competition</p>
+            <h3>F1 Analytics</h3>
+            <p>FastF1 / Python / Data Visualisation</p>
           </div>
-          <span class="achievement-arrow">↗</span>
-        </div>
-
-        <div class="achievement-item reveal magnetic">
-          <span>02</span>
-          <div>
-            <h3>2nd Place — AI Chatbot Competition</h3>
-            <p>Interschool team competition</p>
-          </div>
-          <span class="achievement-arrow">↗</span>
-        </div>
-
-        <div class="achievement-item reveal magnetic">
-          <span>03</span>
-          <div>
-            <h3>Workshop Instructor</h3>
-            <p>Goenkan Geeks Club & Roblox Studio</p>
-          </div>
-          <span class="achievement-arrow">↗</span>
-        </div>
-
-        <div class="achievement-item reveal magnetic">
-          <span>04</span>
-          <div>
-            <h3>Zonal Sports Participation</h3>
-            <p>Basketball & Chess</p>
-          </div>
-          <span class="achievement-arrow">↗</span>
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- CONTACT SECTION -->
-    <section id="contact" class="contact section">
-
-      <div class="contact-glow"></div>
-
-      <div class="section-header reveal">
-        <span class="section-number">05</span>
-        <span class="section-label">GET IN TOUCH</span>
-      </div>
-
-      <div class="contact-content">
-
-        <p class="eyebrow reveal">HAVE AN IDEA?</p>
-
-        <h2 class="reveal">
-          LET'S BUILD
-          <br />
-          <span class="gradient-text">SOMETHING GREAT.</span>
-        </h2>
-
-        <a
-          href="mailto:bhardwajapoorva2848@gmail.com"
-          class="contact-email magnetic reveal"
-        >
-          bhardwajapoorva2848@gmail.com ↗
+          <span class="project-arrow">↗</span>
         </a>
 
-      </div>
+        <a class="project magnetic" href="https://github.com/ABhardwaj28" target="_blank">
+          <span class="project-number">02</span>
+          <div>
+            <h3>Diffraction Simulation</h3>
+            <p>Python / Tkinter / Physics</p>
+          </div>
+          <span class="project-arrow">↗</span>
+        </a>
 
+        <a class="project magnetic" href="https://github.com/ABhardwaj28" target="_blank">
+          <span class="project-number">03</span>
+          <div>
+            <h3>Banking System</h3>
+            <p>Database / SQL / Application Logic</p>
+          </div>
+          <span class="project-arrow">↗</span>
+        </a>
+      </div>
     </section>
 
+    <section id="skills" class="section skills">
+      <div class="section-label">03 / CAPABILITIES</div>
+
+      <h2 class="huge-title reveal">MY<br><span>TOOLKIT.</span></h2>
+
+      <div class="skills-marquee">
+        <div>PYTHON — JAVASCRIPT — SQL — CLOUD — AI — DATA —</div>
+      </div>
+
+      <div class="skill-cloud">
+        <span>Python</span>
+        <span>JavaScript</span>
+        <span>SQL</span>
+        <span>Streamlit</span>
+        <span>Git</span>
+        <span>GitHub</span>
+        <span>Cloud Computing</span>
+        <span>Data Analytics</span>
+      </div>
+    </section>
+
+    <section class="section achievements">
+      <div class="section-label">04 / MILESTONES</div>
+
+      <h2 class="huge-title reveal">KEEP<br><span>GOING.</span></h2>
+
+      <div class="achievement-list">
+        <div><span>01</span><p>First place in an interschool coding competition.</p></div>
+        <div><span>02</span><p>Second place in an interschool AI chatbot competition.</p></div>
+        <div><span>03</span><p>Conducted coding and Roblox Studio workshops.</p></div>
+        <div><span>04</span><p>Built projects involving data, databases, and simulations.</p></div>
+      </div>
+    </section>
+
+    <section id="contact" class="section contact">
+      <div class="section-label">05 / TRANSMISSION</div>
+
+      <h2 class="contact-title reveal">
+        LET'S<br>
+        <a href="mailto:YOUR_EMAIL_HERE">MAKE<br><span>THINGS.</span></a>
+      </h2>
+
+      <div class="contact-footer">
+        <a href="https://github.com/ABhardwaj28" target="_blank">GITHUB ↗</a>
+        <span>APOORVA BHARDWAJ / 2026</span>
+      </div>
+    </section>
   </main>
 
-
-  <!-- Footer -->
-  <footer class="footer">
-
-    <div class="footer-logo">AB<span>.</span></div>
-
-    <div class="footer-links">
-      <a
-        href="https://github.com/ABhardwaj28"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        GitHub
-      </a>
-
-      <a
-        href="https://www.linkedin.com/in/apoorva-bhardwaj-b08852408/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        LinkedIn
-      </a>
-    </div>
-
-    <p>© 2026 Apoorva Bhardwaj</p>
-
+  <footer>
+    <span>AB.</span>
+    <span>BUILT WITH CURIOSITY</span>
   </footer>
 
-
-  <!-- Scripts -->
   <script src="script.js"></script>
-
 </body>
 </html>
