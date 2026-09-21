@@ -1130,3 +1130,24 @@ p {
   }
 
 }
+
+/* =========================================
+   CINEMATIC FLIGHT SECTIONS
+========================================= */
+
+main {
+  perspective: 1400px;
+  overflow: hidden;
+}
+
+main section {
+  transform-style: preserve-3d;
+  will-change: transform, opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  main section {
+    transform: none !important;
+    transition: none !important;
+  }
+}
