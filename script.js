@@ -347,3 +347,97 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 });
+
+
+  // =========================================
+  // 10. CINEMATIC FLIGHT SECTION TRANSITIONS
+  // =========================================
+
+  const flightSections = document.querySelectorAll(
+    "main section"
+  );
+
+  let flightTicking = false;
+
+  function updateFlightMotion() {
+
+    const viewportCenter = window.innerHeight / 2;
+
+    flightSections.forEach((section, index) => {
+
+      const rect = section.getBoundingClientRect();
+
+      const sectionCenter = rect.top + rect.height / 2;
+
+      const distanceFromCenter =
+        (sectionCenter - viewportCenter) /
+        window.innerHeight;
+
+      // Alternate banking directions
+      const direction = index % 2 === 0 ? -1 : 1;
+
+      // Limit rotation to avoid excessive movement
+      const rotation =
+        Math.max(-8, Math.min(8,
+          distanceFromCenter * 10 * direction
+        ));
+
+      // Depth illusion
+      const depth =
+        Math.max(-80, Math.min(80,
+          distanceFromCenter * 70
+        ));
+
+      // Horizontal banking movement
+      const horizontal =
+        Math.max(-35, Math.min(35,
+          distanceFromCenter * 35 * direction
+        ));
+
+      // Slight scale adjustment
+      const scale =
+        1 - Math.min(0.035, Math.abs(distanceFromCenter) * 0.025);
+
+      // Fade distant sections slightly
+      const opacity =
+        Math.max(0.72, 1 - Math.abs(distanceFromCenter) * 0.22);
+
+      section.style.transform = `
+        translate3d(${horizontal}px, 0, ${-Math.abs(depth)}px)
+        rotateY(${rotation}deg)
+        scale(${scale})
+      `;
+
+      section.style.opacity = opacity;
+
+    });
+
+    flightTicking = false;
+
+  }
+
+  function requestFlightMotion() {
+
+    if (!flightTicking) {
+
+      window.requestAnimationFrame(updateFlightMotion);
+
+      flightTicking = true;
+
+    }
+
+  }
+
+  window.addEventListener(
+    "scroll",
+    requestFlightMotion,
+    { passive: true }
+  );
+
+  window.addEventListener(
+    "resize",
+    requestFlightMotion
+  );
+
+  // Initial animation state
+  requestFlightMotion();
