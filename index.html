@@ -2,179 +2,376 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Apoorva Bhardwaj — Software Developer and Builder">
-  <title>AB — Digital Portfolio</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Apoorva Bhardwaj — Developer</title>
+
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
+
+  <div id="loader">
+    <div class="loader-number">00</div>
+    <div class="loader-line"></div>
+    <p>INITIALIZING EXPERIENCE</p>
+  </div>
+
   <div class="cursor"></div>
   <div class="cursor-outline"></div>
 
-  <div class="loader">
-    <span>LOADING EXPERIENCE</span>
-    <strong>001</strong>
-  </div>
+  <canvas id="space"></canvas>
 
-  <header>
+  <div class="noise"></div>
+
+  <header class="navbar">
     <a href="#home" class="logo magnetic">AB<span>.</span></a>
 
     <nav>
+      <a href="#home">Home</a>
       <a href="#about">About</a>
       <a href="#work">Work</a>
       <a href="#skills">Skills</a>
       <a href="#contact">Contact</a>
     </nav>
 
-    <span class="menu-status">AVAILABLE / 2026</span>
+    <a href="#contact" class="nav-contact magnetic">
+      Let's Talk ↗
+    </a>
   </header>
 
   <main>
-    <section id="home" class="hero">
-      <div class="hero-top">
-        <span>CREATIVE DEVELOPER</span>
-        <span>INDIA / 13°N 77°E</span>
-      </div>
 
-      <div class="hero-title">
-        <div class="line reveal-text">APOORVA</div>
-        <div class="line outline reveal-text">BHARDWAJ<span class="dot">.</span></div>
-      </div>
+    <!-- Scroll space controls the virtual camera -->
+    <div id="scroll-space">
 
-      <div class="hero-bottom">
-        <p>
-          Building digital experiences, data systems,
-          and experiments at the intersection of code
-          and curiosity.
-        </p>
+      <section class="scroll-anchor" id="home-anchor"></section>
+      <section class="scroll-anchor" id="about-anchor"></section>
+      <section class="scroll-anchor" id="work-anchor"></section>
+      <section class="scroll-anchor" id="skills-anchor"></section>
+      <section class="scroll-anchor" id="contact-anchor"></section>
 
-        <a href="#work" class="circle-link magnetic">
-          EXPLORE ↗
-        </a>
-      </div>
+    </div>
 
-      <div class="hero-mark">AB / 001</div>
-    </section>
+    <!-- Virtual 3D world -->
+    <div id="world">
+      <div id="stage">
 
-    <section id="about" class="section about">
-      <div class="section-label">01 / ABOUT</div>
+        <!-- HOME -->
+        <section class="scene-panel" data-index="0" id="home">
 
-      <div class="section-grid">
-        <h2 class="huge-title reveal">CURIOUS<br><span>BY DESIGN.</span></h2>
+          <div class="panel-number">01 / 05</div>
 
-        <div class="section-copy reveal">
-          <p>
-            I'm Apoorva, a first-year B.Tech student
-            specialising in Cloud & Big Data.
-          </p>
+          <div class="hero-content">
+            <p class="eyebrow">CLOUD & BIG DATA ENGINEER</p>
 
-          <p>
-            I enjoy building practical software,
-            exploring artificial intelligence,
-            working with data, and turning ideas
-            into interactive experiences.
-          </p>
+            <h1>
+              Building
+              <span>digital</span>
+              experiences.
+            </h1>
 
-          <div class="details">
-            <div><span>BASED IN</span><strong>BENGALURU, INDIA</strong></div>
-            <div><span>FOCUS</span><strong>SOFTWARE / DATA / CLOUD</strong></div>
-            <div><span>CURRENTLY</span><strong>LEARNING & BUILDING</strong></div>
+            <p class="hero-description">
+              First-year B.Tech student exploring software engineering,
+              cloud computing, artificial intelligence, and data.
+            </p>
+
+            <div class="hero-actions">
+              <a href="#work" class="button magnetic">
+                Explore Work <span>↗</span>
+              </a>
+
+              <a href="#contact" class="text-link magnetic">
+                Get in touch ↗
+              </a>
+            </div>
           </div>
-        </div>
-      </div>
-    </section>
 
-    <section id="work" class="section work">
-      <div class="section-label">02 / SELECTED WORK</div>
-
-      <h2 class="huge-title reveal">THINGS<br><span>I BUILD.</span></h2>
-
-      <div class="project-list">
-        <a class="project magnetic" href="https://github.com/ABhardwaj28/F1-project" target="_blank">
-          <span class="project-number">01</span>
-          <div>
-            <h3>F1 Analytics</h3>
-            <p>FastF1 / Python / Data Visualisation</p>
+          <div class="hero-side">
+            <div class="orbit"></div>
+            <p>SCROLL TO<br />ENTER THE SYSTEM ↓</p>
           </div>
-          <span class="project-arrow">↗</span>
-        </a>
 
-        <a class="project magnetic" href="https://github.com/ABhardwaj28" target="_blank">
-          <span class="project-number">02</span>
-          <div>
-            <h3>Diffraction Simulation</h3>
-            <p>Python / Tkinter / Physics</p>
+          <div class="panel-footer">
+            <span>BASED IN BENGALURU, INDIA</span>
+            <span>AVAILABLE FOR OPPORTUNITIES</span>
           </div>
-          <span class="project-arrow">↗</span>
-        </a>
 
-        <a class="project magnetic" href="https://github.com/ABhardwaj28" target="_blank">
-          <span class="project-number">03</span>
-          <div>
-            <h3>Banking System</h3>
-            <p>Database / SQL / Application Logic</p>
+        </section>
+
+
+        <!-- ABOUT -->
+        <section class="scene-panel" data-index="1" id="about">
+
+          <div class="panel-number">02 / 05</div>
+
+          <div class="section-content">
+
+            <p class="eyebrow">A LITTLE ABOUT ME</p>
+
+            <h2>
+              Curiosity
+              <span>drives</span>
+              everything.
+            </h2>
+
+            <div class="about-grid">
+
+              <p class="large-text">
+                I enjoy understanding how complex systems work and
+                transforming ideas into practical digital products.
+              </p>
+
+              <div class="about-details">
+                <p>
+                  Currently pursuing B.Tech in Computer Science with
+                  a specialization in Cloud & Big Data.
+                </p>
+
+                <p>
+                  My interests include backend engineering, data
+                  analytics, AI integrations, and Formula 1 technology.
+                </p>
+
+                <a
+                  href="https://github.com/ABhardwaj28"
+                  target="_blank"
+                  class="text-link magnetic"
+                >
+                  GitHub Profile ↗
+                </a>
+              </div>
+
+            </div>
+
           </div>
-          <span class="project-arrow">↗</span>
-        </a>
+
+          <div class="panel-footer">
+            <span>LEARNING EVERY DAY</span>
+            <span>01 — ABOUT</span>
+          </div>
+
+        </section>
+
+
+        <!-- WORK -->
+        <section class="scene-panel" data-index="2" id="work">
+
+          <div class="panel-number">03 / 05</div>
+
+          <div class="section-content">
+
+            <p class="eyebrow">SELECTED PROJECTS</p>
+
+            <h2>
+              Ideas
+              <span>turned</span>
+              into systems.
+            </h2>
+
+            <div class="projects">
+
+              <a
+                href="https://github.com/ABhardwaj28/F1-project"
+                target="_blank"
+                class="project-card magnetic"
+              >
+                <div class="project-top">
+                  <span>01</span>
+                  <span>PYTHON / FASTF1</span>
+                </div>
+
+                <h3>F1 Analytics Dashboard</h3>
+
+                <p>
+                  A Formula 1 data analytics dashboard featuring
+                  telemetry, driver comparisons, circuit data,
+                  and performance visualizations.
+                </p>
+
+                <div class="project-bottom">
+                  <span>VIEW PROJECT</span>
+                  <span>↗</span>
+                </div>
+              </a>
+
+
+              <a
+                href="https://github.com/ABhardwaj28/Portfolio"
+                target="_blank"
+                class="project-card magnetic"
+              >
+                <div class="project-top">
+                  <span>02</span>
+                  <span>HTML / CSS / JS</span>
+                </div>
+
+                <h3>Personal Portfolio</h3>
+
+                <p>
+                  A cinematic, motion-focused portfolio designed
+                  to present projects, technical interests,
+                  and creative experimentation.
+                </p>
+
+                <div class="project-bottom">
+                  <span>VIEW PROJECT</span>
+                  <span>↗</span>
+                </div>
+              </a>
+
+
+              <div class="project-card">
+                <div class="project-top">
+                  <span>03</span>
+                  <span>PYTHON / TKINTER</span>
+                </div>
+
+                <h3>Diffraction Simulation</h3>
+
+                <p>
+                  A Python-based simulation exploring diffraction
+                  patterns and estimating hair thickness through
+                  an interactive interface.
+                </p>
+
+                <div class="project-bottom">
+                  <span>EXPERIMENTAL</span>
+                  <span>↗</span>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="panel-footer">
+            <span>BUILD. TEST. ITERATE.</span>
+            <span>02 — WORK</span>
+          </div>
+
+        </section>
+
+
+        <!-- SKILLS -->
+        <section class="scene-panel" data-index="3" id="skills">
+
+          <div class="panel-number">04 / 05</div>
+
+          <div class="section-content">
+
+            <p class="eyebrow">TECHNICAL TOOLKIT</p>
+
+            <h2>
+              Always
+              <span>learning</span>
+              something new.
+            </h2>
+
+            <div class="skills-grid">
+
+              <div class="skill-group">
+                <span>01</span>
+                <h3>Languages</h3>
+                <p>Python</p>
+                <p>JavaScript</p>
+                <p>SQL</p>
+                <p>HTML / CSS</p>
+              </div>
+
+              <div class="skill-group">
+                <span>02</span>
+                <h3>Technologies</h3>
+                <p>Streamlit</p>
+                <p>FastF1</p>
+                <p>Git & GitHub</p>
+                <p>Docker</p>
+              </div>
+
+              <div class="skill-group">
+                <span>03</span>
+                <h3>Interests</h3>
+                <p>Cloud Computing</p>
+                <p>Artificial Intelligence</p>
+                <p>Data Analytics</p>
+                <p>Open Source</p>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="panel-footer">
+            <span>PROGRESS OVER PERFECTION</span>
+            <span>03 — SKILLS</span>
+          </div>
+
+        </section>
+
+
+        <!-- CONTACT -->
+        <section class="scene-panel" data-index="4" id="contact">
+
+          <div class="panel-number">05 / 05</div>
+
+          <div class="contact-content">
+
+            <p class="eyebrow">HAVE AN IDEA?</p>
+
+            <h2>
+              Let's build
+              <span>something</span>
+              meaningful.
+            </h2>
+
+            <p class="contact-description">
+              Open to learning opportunities, collaborations,
+              internships, and interesting technical projects.
+            </p>
+
+            <a
+              href="mailto:YOUR_EMAIL_HERE"
+              class="contact-email magnetic"
+            >
+              YOUR_EMAIL_HERE ↗
+            </a>
+
+            <div class="social-links">
+              <a
+                href="https://github.com/ABhardwaj28"
+                target="_blank"
+                class="magnetic"
+              >
+                GitHub ↗
+              </a>
+
+              <a
+                href="https://www.linkedin.com"
+                target="_blank"
+                class="magnetic"
+              >
+                LinkedIn ↗
+              </a>
+            </div>
+
+          </div>
+
+          <div class="panel-footer">
+            <span>THANKS FOR VISITING</span>
+            <span>© 2026 APOORVA BHARDWAJ</span>
+          </div>
+
+        </section>
+
       </div>
-    </section>
+    </div>
 
-    <section id="skills" class="section skills">
-      <div class="section-label">03 / CAPABILITIES</div>
-
-      <h2 class="huge-title reveal">MY<br><span>TOOLKIT.</span></h2>
-
-      <div class="skills-marquee">
-        <div>PYTHON — JAVASCRIPT — SQL — CLOUD — AI — DATA —</div>
-      </div>
-
-      <div class="skill-cloud">
-        <span>Python</span>
-        <span>JavaScript</span>
-        <span>SQL</span>
-        <span>Streamlit</span>
-        <span>Git</span>
-        <span>GitHub</span>
-        <span>Cloud Computing</span>
-        <span>Data Analytics</span>
-      </div>
-    </section>
-
-    <section class="section achievements">
-      <div class="section-label">04 / MILESTONES</div>
-
-      <h2 class="huge-title reveal">KEEP<br><span>GOING.</span></h2>
-
-      <div class="achievement-list">
-        <div><span>01</span><p>First place in an interschool coding competition.</p></div>
-        <div><span>02</span><p>Second place in an interschool AI chatbot competition.</p></div>
-        <div><span>03</span><p>Conducted coding and Roblox Studio workshops.</p></div>
-        <div><span>04</span><p>Built projects involving data, databases, and simulations.</p></div>
-      </div>
-    </section>
-
-    <section id="contact" class="section contact">
-      <div class="section-label">05 / TRANSMISSION</div>
-
-      <h2 class="contact-title reveal">
-        LET'S<br>
-        <a href="mailto:bhardwajapoorva2848@gmail.com">MAKE<br><span>THINGS.</span></a>
-      </h2>
-
-      <div class="contact-footer">
-        <a href="https://github.com/ABhardwaj28" target="_blank">GITHUB ↗</a>
-        <span>APOORVA BHARDWAJ / 2026</span>
-      </div>
-    </section>
   </main>
 
-  <footer>
-    <span>AB.</span>
-    <span>BUILT WITH CURIOSITY</span>
-  </footer>
+  <div class="flight-overlay"></div>
 
   <script src="script.js"></script>
+
 </body>
 </html>
