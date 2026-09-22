@@ -1,4 +1,4 @@
-
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -137,6 +137,7 @@
                 <a
                   href="https://github.com/ABhardwaj28"
                   target="_blank"
+                  rel="noopener noreferrer"
                   class="text-link magnetic"
                 >
                   GitHub Profile ↗
@@ -175,6 +176,7 @@
               <a
                 href="https://github.com/ABhardwaj28/F1-project"
                 target="_blank"
+                rel="noopener noreferrer"
                 class="project-card magnetic"
               >
                 <div class="project-top">
@@ -200,6 +202,7 @@
               <a
                 href="https://github.com/ABhardwaj28/Portfolio"
                 target="_blank"
+                rel="noopener noreferrer"
                 class="project-card magnetic"
               >
                 <div class="project-top">
@@ -334,13 +337,15 @@
               href="mailto:bhardwajapoorva2848@gmail.com"
               class="contact-email magnetic"
             >
-              YOUR_EMAIL_HERE ↗
+              bhardwajapoorva2848@gmail.com ↗
             </a>
 
             <div class="social-links">
+
               <a
                 href="https://github.com/ABhardwaj28"
                 target="_blank"
+                rel="noopener noreferrer"
                 class="magnetic"
               >
                 GitHub ↗
@@ -349,10 +354,12 @@
               <a
                 href="https://www.linkedin.com"
                 target="_blank"
+                rel="noopener noreferrer"
                 class="magnetic"
               >
                 LinkedIn ↗
               </a>
+
             </div>
 
           </div>
@@ -375,3 +382,17 @@
 
 </body>
 </html>
+```
+
+The important change is here:
+
+```html
+<a
+  href="mailto:bhardwajapoorva2848@gmail.com"
+  class="contact-email magnetic"
+>
+  bhardwajapoorva2848@gmail.com ↗
+</a>
+```
+
+So clicking the email opens the mail client **and** the actual email address is now displayed instead of `YOUR_EMAIL_HERE`.
